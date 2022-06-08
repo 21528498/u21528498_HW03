@@ -1,0 +1,36 @@
+﻿@using u21528498_HW03.Models
+@model List<FileModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Images</h2>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" href="style.css" />
+
+@*Accessing the stored images*@
+@foreach(FileModel file in Model)
+            {
+    <div class="col-sm-3 col-md-6 col-lg-4">
+                <div class="card">
+                    <a data-fancybox="gallery" href="~/Media/images/@file.FileName">
+                        <img style="width: 20rem; height: 200px" class="card-img-top" src="~/Media/images/@file.FileName" alt="yhh">
+                    </a>
+                </div>
+    <div class="card-body">
+        <h5 class="card-title"> @file.FileName </h5>
+        <button type="button" class="btn btn-success">
+            @Html.ActionLink("Download", "DownloadFile", new { fileName = file.FileName })
+        </button>
+        <button type="button" class="btn btn-danger">
+                @Html.ActionLink("Delete", "DeleteFile", new { fileName = file.FileName },
+               new { onclick = "return confirm(' Are you sure?');" })
+        </button>
+    </div>
+        </div>
+            }
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min/js"></script>
+

@@ -1,0 +1,45 @@
+﻿@using u21528498_HW03.Models;
+@{
+    ViewBag.Title = "File Upload";
+}
+<h1> File Organizer </h1>
+<h4> Organize your files </h4>
+<br />
+
+<div class="card" style="background-color:aliceblue">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="card-body">
+                <h5 class="card-title" style="font-size: 30px"> Description </h5>
+                <small>
+                    This is a file software. It allows different file formats. Firstly you have to upload files, to
+                    do so you must first choose the type you are uploading. There are three types to choose from; documents,
+                    images or videos. After choosing the type then you can click "choose" and choose the file you want to
+                    upload, then click on "Submit". The files you upload will be saved accordingly and they will be organized
+                    for you. You can then view everything you uploaded, if you want to see images you uploaded you just have
+                    to click on "Images" on the navigation bar and you will be able to see your images, you can do the same with
+                    videos and documents. The best part, you can download or delete the files, there are buttons that allow you
+                    to download the files into your computer or delete the files from your computer. All your files will be 
+                    nicely organized.
+                </small>
+            </div>
+                </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="card-title" style="font-size: 30px"> Option Selection </div>
+
+
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div>@Html.RadioButton("rButton", "Documents") Documents</div>
+                    <div>@Html.RadioButton("rButton", "Image") Image</div>
+                    <div>@Html.RadioButton("rButton", "Video") Video</div>
+                    <br />
+                    <br />
+                    <input type="file" name="Files" />
+                    <input type="submit" value="Submit" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
